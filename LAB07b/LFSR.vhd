@@ -27,7 +27,7 @@ begin
 				feedback <= feedback xor reg(i);
 			end loop;
 		
-			reg(15) <= reg(0);
+			reg(15) <= feedback;
 		end if;
 	end if;
 	LED <= reg;
