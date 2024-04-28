@@ -30,15 +30,16 @@ begin
 	end process;
 	
 	
-    tb: process
+    -- Proces pro øízení naèítání hodnoty SW
+    stimulus_process: process
     begin
-		SW <= "1110000000000000";
-		wait for 10 ns;
-		load <= '1';
-		wait for 100 ns;
-		load <= '0';
-		wait for 1000 ns;
-	end process;
+        wait for 10 ns; -- Èekání 10 ns pøed prvním naètením hodnoty SW
+        load <= '1'; -- Aktivace signálu load
+        SW <= "1000100000100001"; -- Nastavení hodnoty SW
+        wait for 20 ns; -- Èekání 20 ns
+        load <= '0'; -- Deaktivace signálu load
+        wait; -- Konec simulace
+    end process;
 
 
 end Behavioral;
