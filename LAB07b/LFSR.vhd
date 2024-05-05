@@ -22,8 +22,8 @@ begin
             else
                 feedback := reg(14) xor reg(13) xor reg(12) xor reg(11) xor reg(10) xor reg(9) xor reg(8) xor reg(7) xor reg(6) xor reg(5) xor reg(4) xor reg(3) xor reg(2) xor reg(1) xor reg(0);
                 reg <= feedback & reg(15 downto 1);
-                LED <= reg;
             end if;
         end if;
     end process;
+		LED <= reg;
 end Behavioral;
