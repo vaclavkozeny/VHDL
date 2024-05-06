@@ -36,8 +36,8 @@ signal zcnt : std_logic_vector(2 downto 0);
 signal interseg : std_logic_vector(7 downto 0);
 signal interdis : std_logic_vector(7 downto 0);
 
-constant DIV100HZ_WIDTH : integer := 14;
-constant DIV100HZ_LIMIT : integer := 9999;
+constant DIV10kHZ_WIDTH : integer := 14;
+constant DIV10kHZ_LIMIT : integer := 9999;
 constant DIV7_WIDTH : integer := 3;
 constant DIV7_LIMIT : integer := 7;
 
@@ -46,14 +46,14 @@ begin
 
 	clock_div : entity work.counter
         generic map(
-            COUNTER_WIDTH => DIV100HZ_WIDTH
+            COUNTER_WIDTH => DIV10kHZ_WIDTH
         )
         port map(
             clock        => clock,
             cnt          => open,
             reset        => '0',
             clock_enable => '1',
-            limit        => std_logic_vector(to_unsigned(DIV100HZ_LIMIT, DIV100HZ_WIDTH)),
+            limit        => std_logic_vector(to_unsigned(DIV10kHZ_LIMIT, DIV10kHZ_WIDTH)),
             repeat       => '1',
             done         => div10kHz_done
         );
